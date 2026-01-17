@@ -1,0 +1,176 @@
+|-- .clerk
+|-- .env
+|-- .gitignore
+|-- components.json
+|-- docker-compose.yml
+|-- drizzle.config.ts
+|-- eslint.config.mjs
+|-- next-env.d.ts
+|-- next.config.ts
+|-- package-lock.json
+|-- package.json
+|-- postcss.config.mjs
+|-- public
+    |-- file.svg
+    |-- globe.svg
+    |-- icon.svg
+    |-- next.svg
+    |-- vercel.svg
+    |-- window.svg
+|-- README.md
+|-- src
+    |-- app
+        |-- api
+            |-- ai
+                |-- questions
+                    |-- generate-feedback
+                        |-- route.ts
+                    |-- generate-question
+                        |-- route.ts
+                |-- resumes
+                    |-- analyze
+                        |-- route.ts
+            |-- webhooks
+                |-- clerk
+                    |-- route.ts
+        |-- app
+            |-- job-infos
+                |-- new
+                    |-- page.tsx
+                |-- [jobInfoId]
+                    |-- edit
+                        |-- page.tsx
+                    |-- interviews
+                        |-- new
+                            |-- page.tsx
+                            |-- _StartCall.tsx
+                        |-- page.tsx
+                        |-- [interviewId]
+                            |-- page.tsx
+                    |-- page.tsx
+                    |-- questions
+                        |-- page.tsx
+                        |-- _NewQuestionClientPage.tsx
+                    |-- resume
+                        |-- page.tsx
+                        |-- _client.tsx
+            |-- layout.tsx
+            |-- page.tsx
+            |-- upgrade
+                |-- page.tsx
+            |-- _Navbar.tsx
+        |-- favicon.ico
+        |-- globals.css
+        |-- layout.tsx
+        |-- onboarding
+            |-- page.tsx
+            |-- _client.tsx
+        |-- page.tsx
+        |-- sign-in
+            |-- [[...sign-in]]
+                |-- page.tsx
+        |-- sign-up
+            |-- [[...sign-up]]
+                |-- page.tsx
+    |-- components
+        |-- BackLink.tsx
+        |-- MarkdownRenderer.tsx
+        |-- Skeleton.tsx
+        |-- SuspendedItem.tsx
+        |-- ThemeToggle.tsx
+        |-- ui
+            |-- accordion.tsx
+            |-- action-button.tsx
+            |-- alert-dialog.tsx
+            |-- alert.tsx
+            |-- avatar.tsx
+            |-- badge.tsx
+            |-- button.tsx
+            |-- card.tsx
+            |-- dialog.tsx
+            |-- dropdown-menu.tsx
+            |-- form.tsx
+            |-- input.tsx
+            |-- label.tsx
+            |-- loading-swap.tsx
+            |-- resizable.tsx
+            |-- scroll-area.tsx
+            |-- select.tsx
+            |-- sonner.tsx
+            |-- textarea.tsx
+    |-- data
+        |-- env
+            |-- client.ts
+            |-- server.ts
+    |-- drizzle
+        |-- db.ts
+        |-- migrations
+            |-- 0000_many_speed_demon.sql
+            |-- meta
+                |-- 0000_snapshot.json
+                |-- _journal.json
+        |-- schema
+            |-- interview.ts
+            |-- jobInfo.ts
+            |-- question.ts
+            |-- user.ts
+        |-- schema.ts
+        |-- schemaHelpers.ts
+    |-- features
+        |-- interviews
+            |-- actions.ts
+            |-- db.ts
+            |-- dbCache.ts
+            |-- permissions.ts
+        |-- jobInfos
+            |-- actions.ts
+            |-- components
+                |-- JobInfoBackLink.tsx
+                |-- JobInfoForm.tsx
+            |-- db.ts
+            |-- dbCache.ts
+            |-- lib
+                |-- formatters.ts
+            |-- schemas.ts
+        |-- questions
+            |-- db.ts
+            |-- dbCache.ts
+            |-- formatters.ts
+            |-- permissions.ts
+        |-- resumeAnalyses
+            |-- permissions.ts
+        |-- users
+            |-- actions.ts
+            |-- components
+                |-- UserAvatar.tsx
+            |-- db.ts
+            |-- dbCache.ts
+    |-- lib
+        |-- dataCache.ts
+        |-- errorToast.tsx
+        |-- formatters.ts
+        |-- utils.ts
+    |-- middleware.ts
+    |-- services
+        |-- ai
+            |-- interviews.ts
+            |-- models
+                |-- google.ts
+            |-- questions.ts
+            |-- resumes
+                |-- ai.ts
+                |-- schemas.ts
+        |-- clerk
+            |-- components
+                |-- ClerkProvider.tsx
+                |-- PricingTable.tsx
+            |-- lib
+                |-- getCurrentUser.ts
+                |-- hasPermission.ts
+        |-- hume
+            |-- components
+                |-- CondensedMessages.tsx
+            |-- lib
+                |-- api.ts
+                |-- condenseChatMessages.ts
+|-- tsconfig.json
