@@ -16,7 +16,7 @@ A sophisticated AI-powered mock interview platform designed to help job candidat
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework**: Next.js 15.4.2 (Turbopack)
+- **Framework**: Next.js 15+ (Turbopack)
 - **UI Library**: React 19+
 - **Styling**: Tailwind CSS
 - **UI Components**: Shadcn/ui
