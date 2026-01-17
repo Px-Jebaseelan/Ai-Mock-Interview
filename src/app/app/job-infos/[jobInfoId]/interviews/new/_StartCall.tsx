@@ -27,7 +27,7 @@ export function StartCall({
     imageUrl: string
   }
 }) {
-  const { connect, readyState, chatMetadata, callDurationTimestamp } =
+  const { connect, readyState, chatMetadata, callDurationTimestamp, error } =
     useVoice()
   const [interviewId, setInterviewId] = useState<string | null>(null)
   const durationRef = useRef(callDurationTimestamp)
@@ -57,6 +57,7 @@ export function StartCall({
   // Handle disconnect
   useEffect(() => {
     if (readyState !== VoiceReadyState.CLOSED) return
+    if (error) return // Don't redirect on error
     if (interviewId == null) {
       return router.push(`/app/job-infos/${jobInfo.id}/interviews`)
     }
@@ -65,7 +66,39 @@ export function StartCall({
       updateInterview(interviewId, { duration: durationRef.current })
     }
     router.push(`/app/job-infos/${jobInfo.id}/interviews/${interviewId}`)
-  }, [interviewId, readyState, router, jobInfo.id])
+  }, [interviewId, readyState, router, jobInfo.id, error])
+
+  if (error) {
+    return (
+      <div className="h-screen-header flex flex-col items-center justify-center gap-4 text-center p-4">
+        <div className="bg-destructive/10 text-destructive p-4 rounded-full">
+          <PhoneOffIcon className="size-12" />
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-xl font-semibold">Connection Failed</h3>
+          <p className="text-muted-foreground max-w-md">
+            {error.message ||
+              "An error occurred while connecting to the interview server."}
+          </p>
+          <p className="text-xs text-muted-foreground font-mono bg-muted p-2 rounded text-left">
+            Type: {error.type} <br />
+            Reason: {error.reason}
+          </p>
+        </div>
+        <div className="flex gap-4">
+          <Button
+            variant="outline"
+            onClick={() =>
+              router.push(`/app/job-infos/${jobInfo.id}/interviews`)
+            }
+          >
+            Go Back
+          </Button>
+          <Button onClick={() => window.location.reload()}>Try Again</Button>
+        </div>
+      </div>
+    )
+  }
 
   if (readyState === VoiceReadyState.IDLE) {
     return (
@@ -125,7 +158,7 @@ function Messages({ user }: { user: { name: string; imageUrl: string } }) {
   const { messages, fft } = useVoice()
 
   const condensedMessages = useMemo(() => {
-    return condenseChatMessages(messages)
+    return condenseChatMessages(messages as any)
   }, [messages])
 
   return (
